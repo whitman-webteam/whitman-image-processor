@@ -384,6 +384,7 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>Original Filename</th>
               <th>Base Filename (Editable)</th>
               <th>Final Output Preview</th>
             </tr>
@@ -392,6 +393,9 @@
             {#each batch.images as img, i}
               <tr class={i === batch.activeIndex ? 'active-row' : ''}>
                 <td class="col-index">{i + 1}</td>
+                <td class="col-original" title={img.file?.name}>
+                  {img.file?.name}
+                </td>
                 <td class="col-input">
                   <input 
                     type="text" 
