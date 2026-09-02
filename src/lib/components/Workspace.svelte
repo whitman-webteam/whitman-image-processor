@@ -1,4 +1,5 @@
 <script>
+  import { file } from 'jszip';
   import { batch } from '../batchState.svelte.js';
   import { PRESET_GROUPS, getPresetById } from '../presets.js';
   import { processSingleImage } from '../processor.js';
@@ -269,6 +270,10 @@
       <section class="image-info-panel">
         <h4 class="panel-title">Original File Info</h4>
         <ul class="info-list">
+          <li>
+            <span class="label">Name:</span> 
+            <span class="value">{activeImage.file?.name}</span>
+          </li>
           <li>
             <span class="label">Type:</span> 
             <span class="value">{formatMimeType(activeImage.file?.type)}</span>
