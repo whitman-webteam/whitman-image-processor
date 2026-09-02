@@ -1,6 +1,6 @@
-# sv
+# Image Processor
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This app provides batch resizing and cropping tools. It incorporates recommended image sizes for our website.
 
 ## Creating a project
 
