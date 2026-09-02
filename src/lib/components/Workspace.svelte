@@ -22,6 +22,7 @@
           maxKB: 1000
         }
   );
+  
 
   // Size Estimation State
   let estimatedKB = $state(0);
@@ -439,31 +440,32 @@
 </div>
 
 <style>
-  .workspace {
+.workspace {
     display: flex;
     height: 85vh;
     min-height: 700px;
-    background: white;
-    border: 1px solid #e2e8f0;
+    background: #FFFFFF;
+    border: 1px solid #6CB2E2; /* Whitman Light Blue */
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 40, 104, 0.15); /* Whitman Blue shadow */
   }
   .sidebar {
     width: 280px;
-    background: #f8fafc;
-    border-right: 1px solid #e2e8f0;
+    background: #EFF2F9; /* Whitman Cool Grey */
+    border-right: 1px solid #6CB2E2;
     display: flex;
     flex-direction: column;
   }
   .queue-header {
     padding: 16px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #6CB2E2;
+    background: #002868; /* Whitman Blue */
   }
   .queue-header h3 {
     margin: 0;
     font-size: 1rem;
-    color: #0f172a;
+    color: #FFFFFF;
   }
   .thumbnail-list {
     flex: 1;
@@ -478,14 +480,15 @@
     position: relative;
     aspect-ratio: 1;
     padding: 0;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    background: #e2e8f0;
+    background: #FFFFFF;
   }
   .thumb-card.active {
-    border-color: #6366f1;
+    border-color: #FFC627; /* Whitman Yellow for active highlight */
+    box-shadow: 0 0 8px rgba(255, 198, 39, 0.5);
   }
   .thumb-card img {
     width: 100%;
@@ -497,8 +500,8 @@
     position: absolute;
     top: 4px;
     left: 4px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: #010E30; /* Whitman Navy */
+    color: #FFFFFF;
     font-size: 0.7rem;
     padding: 2px 6px;
     border-radius: 4px;
@@ -511,8 +514,8 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: rgba(1, 14, 48, 0.6); /* Transparent Navy */
+    color: #FFFFFF;
     border: none;
     display: flex;
     align-items: center;
@@ -526,14 +529,14 @@
     padding-bottom: 2px;
   }
   .delete-btn:hover {
-    background: #ef4444;
+    background: #D32F2F; /* Keep red for destructive actions */
     opacity: 1;
     transform: scale(1.1);
   }
 
   .image-info-panel {
-    background: white;
-    border-top: 1px solid #e2e8f0;
+    background: #FFFFFF;
+    border-top: 1px solid #6CB2E2;
     padding: 16px;
     font-size: 0.815rem;
   }
@@ -543,7 +546,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #64748b;
+    color: #002868; /* Whitman Blue */
   }
   .info-list {
     list-style: none;
@@ -559,17 +562,17 @@
     align-items: center;
   }
   .info-list .label {
-    color: #475569;
+    color: #333333; /* Whitman Black */
     font-weight: 500;
   }
   .info-list .value {
-    color: #0f172a;
+    color: #010E30; /* Whitman Navy */
     font-family: monospace;
     font-weight: 600;
-    background: #f8fafc;
+    background: #EFF2F9; /* Whitman Cool Grey */
     padding: 2px 6px;
     border-radius: 4px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #6CB2E2;
   }
 
   .editor {
@@ -580,10 +583,10 @@
   }
   .toolbar {
     padding: 16px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #6CB2E2;
     display: flex;
     gap: 24px;
-    background: white;
+    background: #FFFFFF;
     flex-wrap: wrap;
     flex-shrink: 0;
   }
@@ -595,7 +598,7 @@
   .control-group label {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #475569;
+    color: #002868; /* Whitman Blue */
   }
   .flex-row {
     display: flex;
@@ -605,25 +608,26 @@
   input[type='range'] {
     padding: 4px 8px;
     border-radius: 6px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #6CB2E2;
     font-size: 0.875rem;
-    background-color: white;
+    background-color: #FFFFFF;
+    color: #010E30;
   }
   
   .apply-all-btn {
     padding: 4px 12px;
     border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    background-color: #f8fafc;
+    border: 1px solid #002868;
+    background-color: #002868; /* Whitman Blue */
     font-size: 0.75rem;
     font-weight: 600;
-    color: #475569;
+    color: #FFFFFF;
     cursor: pointer;
     transition: all 0.2s;
   }
   .apply-all-btn:hover {
-    background-color: #e2e8f0;
-    color: #0f172a;
+    background-color: #010E30; /* Whitman Navy */
+    border-color: #010E30;
   }
 
   .indicator-bar {
@@ -631,8 +635,8 @@
     align-items: center;
     gap: 12px;
     padding: 8px 16px;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
+    background: #EFF2F9; /* Whitman Cool Grey */
+    border-bottom: 1px solid #6CB2E2;
     flex-shrink: 0;
   }
   .indicator-pill {
@@ -647,21 +651,21 @@
   }
   .indicator-text {
     font-size: 0.75rem;
-    color: #64748b;
+    color: #333333; /* Whitman Black */
   }
 
   .canvas-container {
     flex: 1;
     position: relative;
-    background: #1e293b;
+    background: #010E30; /* Whitman Navy for dark canvas */
     min-height: 250px;
   }
 
   .naming-pane {
     height: 220px;
     flex-shrink: 0;
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
+    background: #EFF2F9; /* Whitman Cool Grey */
+    border-top: 1px solid #6CB2E2;
     display: flex;
     flex-direction: column;
   }
@@ -670,13 +674,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    border-bottom: 1px solid #e2e8f0;
-    background: white;
+    border-bottom: 1px solid #6CB2E2;
+    background: #FFFFFF;
   }
   .naming-header h4 {
     margin: 0;
     font-size: 0.875rem;
-    color: #0f172a;
+    color: #002868; /* Whitman Blue */
   }
   .naming-toggles {
     display: flex;
@@ -687,7 +691,7 @@
     align-items: center;
     gap: 6px;
     font-size: 0.815rem;
-    color: #475569;
+    color: #333333; /* Whitman Black */
     cursor: pointer;
   }
   .naming-list {
@@ -704,25 +708,34 @@
   .naming-table th {
     position: sticky;
     top: 0;
-    background: #f1f5f9;
+    background: #6CB2E2; /* Whitman Light Blue */
     padding: 8px 16px;
-    color: #475569;
+    color: #010E30; /* Whitman Navy */
     font-weight: 600;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #002868;
     z-index: 10;
   }
   .naming-table td {
     padding: 8px 16px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #6CB2E2;
     vertical-align: middle;
   }
   .active-row td {
-    background-color: #eef2ff;
+    background-color: rgba(255, 198, 39, 0.15); /* Faint Whitman Yellow */
   }
   .col-index {
     width: 40px;
-    color: #64748b;
+    color: #333333;
     font-weight: 500;
+  }
+  .col-original {
+    width: 25%;
+    color: #333333;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
   }
   .col-input {
     width: 40%;
@@ -730,20 +743,20 @@
   .filename-input {
     width: 100%;
     padding: 6px 8px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #6CB2E2;
     border-radius: 4px;
     font-family: monospace;
     font-size: 0.815rem;
-    color: #0f172a;
+    color: #010E30; /* Whitman Navy */
   }
   .filename-input:focus {
     outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 1px #6366f1;
+    border-color: #002868; /* Whitman Blue */
+    box-shadow: 0 0 0 1px #002868;
   }
   .col-preview {
     font-family: monospace;
-    color: #16a34a;
-    font-weight: 500;
+    color: #002868; /* Whitman Blue */
+    font-weight: 600;
   }
 </style>
