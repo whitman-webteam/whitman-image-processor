@@ -43,6 +43,16 @@
   });
 
   let nativeResolution = $state('Calculating...');
+  let nativeAspectRatio = $state('Calculating...');
+
+  /**
+   * @param {number} a
+   * @param {number} b
+   * @returns {number}
+   */
+  function getGCD(a, b) {
+    return b === 0 ? a : getGCD(b, a % b);
+  }
 
   /**
    * @param {string | undefined} mimeString
@@ -68,13 +78,20 @@
   $effect(() => {
     if (activeImage?.objectUrl) {
       nativeResolution = 'Calculating...';
+      nativeAspectRatio = 'Calculating...'; // Reset state
+      
       const img = new Image();
       img.onload = () => {
         nativeResolution = `${img.width} × ${img.height} px`;
+        
+        // Calculate the simplified ratio
+        const divisor = getGCD(img.width, img.height);
+        nativeAspectRatio = `${img.width / divisor}:${img.height / divisor}`;
       };
       img.src = activeImage.objectUrl;
     } else {
       nativeResolution = 'N/A';
+      nativeAspectRatio = 'N/A';
     }
   });
 
@@ -285,6 +302,10 @@
           <li>
             <span class="label">Dimensions:</span> 
             <span class="value">{nativeResolution}</span>
+          </li>
+          <li>
+            <span class="label">Ratio:</span> 
+            <span class="value">{nativeAspectRatio}</span>
           </li>
         </ul>
       </section>
