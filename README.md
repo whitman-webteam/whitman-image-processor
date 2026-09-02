@@ -1,8 +1,11 @@
 # Image Processor
 
-This app provides batch resizing and cropping tools. It incorporates recommended image sizes for our website.
+This app provides batch resizing and cropping tools. It incorporates recommended image sizes for our website. It is purely a front-end app with no state management. Users are warned that leaving the app idle in browser may lead to lost work. This app is designed to provide the same basic tools we commonly use in Photoshop, without the overhead and advanced features we don't need.
 
-## Creating a project
+
+
+## Svelte basics
+### Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!
 
@@ -18,7 +21,7 @@ To recreate this project with the same configuration:
 npx sv@0.15.3 create --template minimal --types jsdoc --install npm image-flow
 ```
 
-## Developing
+### Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -29,7 +32,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
