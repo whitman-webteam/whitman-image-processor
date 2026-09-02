@@ -1,0 +1,41 @@
+# Node Dependencies
+node_modules/
+# package-lock.json
+# (Keep package-lock.json IF you want to lock dependency versions, 
+# otherwise ignore it. Most projects keep it, so you can comment this out)
+
+# SvelteKit & Vite Build Outputs
+.svelte-kit/
+build/
+dist/
+
+# Environment Variables (Security)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
