@@ -4,10 +4,21 @@
   import { batch, clearBatch } from '$lib/batchState.svelte.js';
   import { downloadBatchZip } from '$lib/processor.js';
   import { getPresetById } from '$lib/presets.js';
-  
   import { resolve } from '$app/paths';
 
   let isProcessing = $state(false);
+
+  // Wrapper to safely decode our new custom and ratio IDs for the processor
+  function resolveDynamicPreset(pId) {
+    if (pId?.startsWith('custom_') || pId?.startsWith('ratio_')) {
+      const parts = pId.split('_');
+      // custom_W_H or ratio_R_W_H
+      const w = Number(parts[parts.length - 2]);
+      const h = Number(parts[parts.length - 1]);
+      return { id: pId, width: w, height: h, aspect: w / h };
+    }
+    return getPresetById(pId);
+  }
 
   async function handleProcess() {
       isProcessing = true;
@@ -15,7 +26,7 @@
         batch.images, 
         batch.exportFormat, 
         batch.exportQuality, 
-        getPresetById
+        resolveDynamicPreset // Pass our wrapper instead
       );
       isProcessing = false;
     }
@@ -24,7 +35,6 @@
 <main class="container">
   <header class="app-header">
     <div class="brand-title">
-      <!-- Added a wrapper box for contrast -->
       <div class="logo-box">
         <img src={resolve('/whitman-college.svg')} alt="Whitman College" class="header-logo" />
       </div>
@@ -49,17 +59,14 @@
 </main>
 
 <style>
-  /* Import Whitman's brand fonts from Google Fonts */
   @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
   :global(body) {
     margin: 0;
-    /* Apply Montserrat (Vito alternative) to the main body */
     font-family: 'Montserrat', Calibri, system-ui, -apple-system, sans-serif;
     background-color: #f1f5f9;
   }
   
-  /* Apply Lora to all headings */
   :global(h1, h2, h3, h4, h5, h6) {
     font-family: 'Lora', Georgia, serif;
   }
@@ -75,28 +82,24 @@
     align-items: center;
     margin-bottom: 24px;
   }
-  
   .brand-title {
     display: flex;
     align-items: center;
     gap: 16px;
   }
-  
   .logo-box {
-    background-color: #002868; /* Whitman Blue */
+    background-color: #002868;
     padding: 8px 12px;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .header-logo {
     height: 20px; 
     width: auto;
     display: block;
   }
-  
   h1 {
     color: #0f172a;
     margin: 0;
@@ -115,7 +118,7 @@
     font-weight: 600;
   }
   .btn-primary {
-    background: #002868; /* Updated button to Whitman Blue to match logo box */
+    background: #002868; 
     color: white;
     border: none;
     padding: 8px 24px;
@@ -124,6 +127,6 @@
     font-weight: 600;
   }
   .btn-primary:hover {
-    background: #010E30; /* Whitman Navy for hover state */
+    background: #010E30;
   }
 </style>
